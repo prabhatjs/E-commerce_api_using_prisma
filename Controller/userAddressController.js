@@ -26,12 +26,11 @@ try {
     })
     return res.status(200).json({
         message:"Deleted Successfully"
-    })
-} catch (error) {
+    })} 
+    catch (error) {
     return res.status(400).json({
         message:"Address Not Found"
-    })
-}
+    })}
 }
 
 export const listAddress=async(req,res)=>{
@@ -45,7 +44,7 @@ export const listAddress=async(req,res)=>{
         data:addres
     })
 }
-
+//update User Address..
 export const updateAddress=async(req,res)=>{
     const validateddata=UpdateUserAddresSchema.parse(req.body);
     let shipingAddress,billingaddress;
@@ -64,8 +63,7 @@ export const updateAddress=async(req,res)=>{
         }
         if(shipingAddress.userId!=req.user.id){
             return res.status(400).json({
-                message:"Address not belong to this user",
-                error:error
+                message:"Address not belong to this user"
             })
         }
     }
@@ -84,8 +82,7 @@ export const updateAddress=async(req,res)=>{
         }
         if(billingaddress.userId!=req.user.id){
             return res.status(400).json({
-                message:"Address not belong to this user",
-                error:error
+                message:"Address not belong to this user"
             })
         }
     }
